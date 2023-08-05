@@ -1,0 +1,193 @@
+require:
+  - rubocop-rails
+  - rubocop-performance
+
+Rails:
+  Enabled: false
+
+Metrics/ClassLength:
+  Enabled: false
+
+AllCops:
+  TargetRubyVersion: 2.7.2
+  NewCops: enable
+  Exclude:
+    - "db/**/*"
+    - "node_modules/**/*"
+    - "spec/services/import_delivery_document_service_spec.rb"
+    - "app/services/import_delivery_document_service.rb"
+
+# Configurações Rech:
+
+# Nomeamos os fontes com extensão
+Naming/FileName:
+  Enabled: false
+
+# Costumamos comentar usando acentuação em português
+Style/AsciiComments:
+  Enabled: false
+
+# Colocamos a extensão .rb nos require para evidenciar que são classes nossas
+Style/RedundantFileExtensionInRequire:
+  Enabled: false
+
+# Preferimos colocar o return no fim do método para ficar bem claro, ao invés de manter o último comando retornando por default
+Style/RedundantReturn:
+  Enabled: false
+
+# Desde que iniciamos a usar o ruby trabalhamos com aspas duplas, agora fica difícil ajustar todos os pontos que não precisam
+# de interpolação, quem sabe no futuro podemos revisar isto
+Style/StringLiterals:
+  Enabled: false
+
+# Usamos uma linha em branco no início e no final para maior clareza
+Layout/EmptyLinesAroundClassBody:
+  Enabled: false
+
+# Não usamos separadores entre ifs, não é necessário
+Layout/EmptyLineAfterGuardClause:
+  Enabled: false
+
+# Não temos o hábito de usar o unless, usamos muito fazer teste com negação na frente, no estilo do Java
+Style/IfUnlessModifier:
+  Enabled: false
+
+# Não temos o hábito de usar o unless, usamos muito fazer teste com negação na frente, no estilo do Java
+Style/NegatedIf:
+  Enabled: false
+
+# Não costumamos usar unless e outras construções diferentes das outras linguagens que estamos acostumados
+Style/GuardClause:
+  Enabled: false
+
+# Preferimos declarar arrays como um conjunto de strings, ex: pessoas = ["FULANO", "BELTRANO", etc...]
+Style/WordArray:
+  Enabled: false
+
+# Recurso novo do Ruby para congelar literais, virá por default em versões futuras
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+# Essa checagem é feita também na primeira linha, não deixamos nenhuma em branco, no final não é problema pois checamos pelo veruby.bat
+Layout/EndOfLine:
+  Enabled: false
+
+# Várias construções que fizemos é melhor deixar a lógica dentro de um if ao invés de seguir a dica de usar um next
+Style/Next:
+  Enabled: false
+
+# Estamos acostumados a identar os 'when' um nível adentro como é feito no Java e no COBOL, por este motivo decidimos padronizar assim nosso código ruby
+Layout/CaseIndentation:
+  Enabled: false
+
+# O uso dessa dica pode ocasionar em um código estranho para nós, preferimos fazer de forma mais simples e legível
+Style/ConditionalAssignment:
+  Enabled: false
+
+# Usamos largamente STDIN, com calma pesquisar se tem alguma vantagem o uso de $stdin como é indicado e liberar esse warning
+Style/GlobalStdStream:
+  Enabled: false
+
+# Estamos acustumados a usar a notação /<regex>/
+Style/RegexpLiteral:
+  Enabled: false
+
+# Fica mais claro usar if/else
+Style/IfInsideElse:
+  Enabled: false
+
+# Não é necessário identar os métodos dentro da sessão 'private', usamos no alinhamento do 'def' e fica bom!
+Layout/AccessModifierIndentation:
+  Enabled: false
+
+# Usamos os modificadores de formatação estilo do 'C' eventualmente, é bom, fácil de achar documentação, não tem porque não usar
+Style/FormatStringToken:
+  Enabled: false
+
+# Usamos while true que é compativel com C, Java, etc
+Style/InfiniteLoop:
+  Enabled: false
+
+# Usamos o reduce pois é padrão de outras linguagens e apis de stream
+Style/EachWithObject:
+  Enabled: false
+
+# A forma curta fica até melhor de entender, a dica não pareceu muito útil
+Style/PerlBackrefs:
+  Enabled: false
+
+# A forma normal/tradicional de declaração de array de symbol parece mais clara
+Style/SymbolArray:
+  Enabled: false
+
+# A sugestão do rubocop para colocar a definição do método vazio em uma linha não é muito boa
+Style/EmptyMethod:
+  Enabled: false
+
+# Eventualmente usamos parâmetros de métodos bem pequenos como 'wc' para 'working copy' por exemplo
+Naming/AccessorMethodName:
+  Enabled: false
+
+# Estamos acostumados em Java usar == 0, > 0 e < 0, o padrão indicado por este warning é meio forçado!
+Style/NumericPredicate:
+  Enabled: false
+
+# Em ruby, blocos simples dentro de funções não obrigam do begin a partir do ruby 2.5, mas para fins de organização do código preferimos o bloco como em Java
+Style/RedundantBegin:
+  Enabled: false
+
+# É melhor um case vazio para checar as opções de um script, ex: when args["opcao1"] do que fazer if/elseif
+Style/EmptyCaseCondition:
+  Enabled: false
+
+# Mesmo com apenas uma linha dentro do laço preferimos manter a sintaxe mais clara, experimentamos e não ficou bom
+Style/WhileUntilModifier:
+  Enabled: false
+
+# Geralmente usamos nomes de parâmetro mais longos e descritivos, mas alguns como "wc", "bd", "vm", fazem sentido no contexto do script
+Naming/MethodParameterName:
+    MinNameLength: 2
+
+# Eventualmente podemos ter em alguns poucos lugares mais de 3 níveis de aninhamento de comandos
+Metrics/BlockNesting:
+    Max: 4
+
+# Muitas vezes precisamos de métodos um pouco mais longos, o limite default de 10 linhas é muito pouco, aumentado para caber em duas tela
+Metrics/MethodLength:
+    Max: 128
+
+# Muitas vezes precisamos de blocos um pouco mais longos, o limite default de 25 linhas é muito pouco, aumentado para caber em uma método de uma tela
+Metrics/BlockLength:
+    Max: 48
+
+# Eventualmente temos alguns métodos com complexidade maior que o default de 17
+Metrics/AbcSize:
+    Max: 128
+
+# Eventualmente temos alguns métodos com complexidade maior que o default de 8
+Metrics/CyclomaticComplexity:
+    Max: 24
+
+# Eventualmente temos alguns métodos com complexidade maior que o default de 8
+Metrics/PerceivedComplexity:
+    Max: 32
+
+# Eventualmente temos alguns métodos com mais parâmetros que o default de 5
+Metrics/ParameterLists:
+    Max: 6
+
+# Evitar warnings em chamadas de chmod(0777)
+Style/NumericLiteralPrefix:
+    EnforcedOctalStyle: zero_only
+
+# Ocorre ao capturar o status de saida, mas a sugestão de melhoria inclui adicionar mais uma dependência do módulo 'english' que não tem disponível para linux
+Style/SpecialGlobalVars:
+  Enabled: false
+
+# Desabilitada checagem, pois é necessário este cache global em vários pontos, e a remoção ocasionou problemas como no SevenZip.rb
+Style/ClassVars:
+  Enabled: false
+
+# Desabilitada checagem deste novo cop, visto que sugere uma forma mais verbosa para busca de conteúdo de variáveis de ambiente
+# Style/FetchEnvVar:
+  # Enabled: false
