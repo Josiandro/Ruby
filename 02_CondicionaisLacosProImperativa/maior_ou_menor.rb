@@ -14,17 +14,18 @@ numero_secreto = 175
 puts '...'
 puts 'Escolhido. Agora você precisa advinhar que número é esse.'
 
-# Laço para aceitação e validação do número sorteado
-for contador in 1..3 do
-    # Aceita o número do usuário
-    puts "\nTentativa #{contador}"
+# Laço que vai aceitar as 3 tentativas do usuário
+for tentativa in 1..3 do
+    # Tentativas do usuário
+    puts "\nTentativa #{tentativa}"
     print 'Qual número você acha que foi o escolhido? '
     chute = STDIN.gets.chomp.to_i
     puts "Seu palpite foi #{chute}"
 
-    # Verifica se o usuário acertou o número sorteado
+    # Verificar se o usuário acertou o número e grava true ou false na variável
     acertou = numero_secreto == chute
 
+    # Se acertou, retorna a mensagem e interrompe o laço
     if acertou
         puts 'Você acertou!'
         break if acertou
