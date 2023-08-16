@@ -14,62 +14,26 @@ numero_secreto = 175
 puts '...'
 puts 'Escolhido. Agora você precisa advinhar que número é esse.'
 
-# Aceita o número do usuário
-puts "\nTentativa 1"
-print 'Qual número você acha que foi o escolhido? '
-chute = STDIN.gets.chomp.to_i
-puts "Seu palpite foi #{chute}"
+# Laço para aceitação e validação do número sorteado
+for contador in 1..3 do
+    # Aceita o número do usuário
+    puts "\nTentativa #{contador}"
+    print 'Qual número você acha que foi o escolhido? '
+    chute = STDIN.gets.chomp.to_i
+    puts "Seu palpite foi #{chute}"
 
-# Verifica se o usuário acertou o número sorteado
-acertou = numero_secreto == chute
+    # Verifica se o usuário acertou o número sorteado
+    acertou = numero_secreto == chute
 
-if acertou
-    puts 'Você acertou!'
-else
-    maior = chute < numero_secreto
-    if maior
-        puts 'O número é maior!'
+    if acertou
+        puts 'Você acertou!'
+        break if acertou
     else
-        puts 'O número é menor!'
-    end
-end
-
-# Aceita o número do usuário
-puts "\nTentativa 2"
-print 'Qual número você acha que foi o escolhido? '
-chute = STDIN.gets.chomp.to_i
-puts "Seu palpite foi #{chute}"
-
-# Verifica se o usuário acertou o número sorteado
-acertou = numero_secreto == chute
-
-if acertou
-    puts 'Você acertou!'
-else
-    maior = chute < numero_secreto
-    if maior
-        puts 'O número é maior!'
-    else
-        puts 'O número é menor!'
-    end
-end
-
-# Aceita o número do usuário
-puts "\nTentativa 3"
-print 'Qual número você acha que foi o escolhido? '
-chute = STDIN.gets.chomp.to_i
-puts "Seu palpite foi #{chute}"
-
-# Verifica se o usuário acertou o número sorteado
-acertou = numero_secreto == chute
-
-if acertou
-    puts 'Você acertou!'
-else
-    maior = chute < numero_secreto
-    if maior
-        puts 'O número é maior!'
-    else
-        puts 'O número é menor!'
-    end
+        maior = chute < numero_secreto
+        if maior
+            puts 'O número é maior!'
+        else
+            puts 'O número é menor!'
+        end
+    end  
 end
