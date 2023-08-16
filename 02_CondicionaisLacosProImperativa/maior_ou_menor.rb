@@ -31,7 +31,7 @@ for tentativa in 1..limite_tentativas do
     # Se acertou, retorna a mensagem e interrompe o laço
     if acertou
         puts 'Você acertou!'
-        break if acertou
+        break
     else
         maior = chute < numero_secreto
         if maior
