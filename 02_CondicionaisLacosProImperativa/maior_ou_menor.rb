@@ -14,10 +14,13 @@ numero_secreto = 175
 puts '...'
 puts 'Escolhido. Agora você precisa advinhar que número é esse.'
 
+# Limite de tentativas que será usado no laço
+limite_tentativas = 5
+
 # Laço que vai aceitar as 3 tentativas do usuário
-for tentativa in 1..3 do
+for tentativa in 1..limite_tentativas do
     # Tentativas do usuário
-    puts "\nTentativa #{tentativa}"
+    puts "\nTentativa #{tentativa} de #{limite_tentativas}"
     print 'Qual número você acha que foi o escolhido? '
     chute = STDIN.gets.chomp.to_i
     puts "Seu palpite foi #{chute}"
