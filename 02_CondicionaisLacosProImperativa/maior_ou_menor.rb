@@ -14,30 +14,62 @@ numero_secreto = 175
 puts '...'
 puts 'Escolhido. Agora você precisa advinhar que número é esse.'
 
-def validador(chute, numero_secreto)
-    # Verifica se o usuário acertou o número sorteado
-    acertou = numero_secreto == chute
+# Aceita o número do usuário
+puts "\nTentativa 1"
+print 'Qual número você acha que foi o escolhido? '
+chute = STDIN.gets.chomp.to_i
+puts "Seu palpite foi #{chute}"
 
-    if acertou
-        puts 'Você acertou!'
+# Verifica se o usuário acertou o número sorteado
+acertou = numero_secreto == chute
+
+if acertou
+    puts 'Você acertou!'
+else
+    maior = chute < numero_secreto
+    if maior
+        puts 'O número é maior!'
     else
-        maior = chute < numero_secreto
-        if maior
-            puts 'O número é maior!'
-        else
-            puts 'O número é menor!'
-        end
+        puts 'O número é menor!'
     end
 end
 
-# Aceitação das tentativas de advinhação
-(1..3).each do |nro_tentativa| 
-    puts "\nTentativa #{nro_tentativa}"
-    print 'Qual número você acha que foi o escolhido? '
-    chute = STDIN.gets.chomp.to_i
-    puts "Seu palpite foi #{chute}"
+# Aceita o número do usuário
+puts "\nTentativa 2"
+print 'Qual número você acha que foi o escolhido? '
+chute = STDIN.gets.chomp.to_i
+puts "Seu palpite foi #{chute}"
 
-    validador(chute, numero_secreto)
+# Verifica se o usuário acertou o número sorteado
+acertou = numero_secreto == chute
+
+if acertou
+    puts 'Você acertou!'
+else
+    maior = chute < numero_secreto
+    if maior
+        puts 'O número é maior!'
+    else
+        puts 'O número é menor!'
+    end
 end
 
+# Aceita o número do usuário
+puts "\nTentativa 3"
+print 'Qual número você acha que foi o escolhido? '
+chute = STDIN.gets.chomp.to_i
+puts "Seu palpite foi #{chute}"
 
+# Verifica se o usuário acertou o número sorteado
+acertou = numero_secreto == chute
+
+if acertou
+    puts 'Você acertou!'
+else
+    maior = chute < numero_secreto
+    if maior
+        puts 'O número é maior!'
+    else
+        puts 'O número é menor!'
+    end
+end
