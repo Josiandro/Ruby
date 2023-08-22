@@ -18,6 +18,15 @@ def sorteia_numero_secreto
     return sorteado
 end
 
+# Método que pede um número para o usuário
+def pede_um_numero(tentativa, limite_tentativas)
+    puts "\nTentativa #{tentativa} de #{limite_tentativas}"
+    print 'Qual número você acha que foi o escolhido? '
+    chute = STDIN.gets.chomp.to_i
+    puts "Seu palpite foi #{chute}"
+    return chute
+end
+
 # Chamada do método inicial do jogo
 da_boas_vindas
 
@@ -27,13 +36,10 @@ numero_secreto = sorteia_numero_secreto
 # Limite de tentativas que será usado no laço
 limite_tentativas = 5
 
-# Laço que vai aceitar as 3 tentativas do usuário
+# Laço que vai aceitar as tentativas do usuário
 for tentativa in 1..limite_tentativas do
-    # Tentativas do usuário
-    puts "\nTentativa #{tentativa} de #{limite_tentativas}"
-    print 'Qual número você acha que foi o escolhido? '
-    chute = STDIN.gets.chomp.to_i
-    puts "Seu palpite foi #{chute}"
+    # Chamada do método que pede um número para o usuáro
+    chute = pede_um_numero(tentativa, limite_tentativas)
 
     # Verificar se o usuário acertou o número e grava true ou false na variável
     acertou = numero_secreto == chute
