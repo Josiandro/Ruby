@@ -30,6 +30,8 @@ end
 def verifica_se_acertou(chute, numero_secreto)
     # acertou recebe true ou false
     acertou = numero_secreto == chute
+    
+    # if com implementação do early return
     if acertou
         puts 'Você acertou!'
         return true
