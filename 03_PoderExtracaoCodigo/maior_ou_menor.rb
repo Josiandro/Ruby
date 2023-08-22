@@ -46,7 +46,6 @@ def verifica_se_acertou(chute, numero_secreto)
 end
 
 da_boas_vindas
-
 numero_secreto = sorteia_numero_secreto
 
 # Variável que guarda o limite de tentativas
