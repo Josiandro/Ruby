@@ -1,4 +1,4 @@
-# Método inicial que dá boas vindas para o jogador
+# Função que dá boas vindas ao jogador
 def da_boas_vindas
     puts '================================'
     puts '       JOGO DA ADVINHAÇÃO       '
@@ -8,17 +8,16 @@ def da_boas_vindas
     puts "\nOk! Vamos começar o jogo para você, #{nome}."
 end
 
-# Método que faz o sorteio do número secreto
+# Função que faz o sorteio do número e retorna o número sorteado
 def sorteia_numero_secreto
     puts 'O computador está escolhendo um número entre 0 e 200.'
     sorteado = 175
     puts '...'
     puts 'Escolhido. Agora você precisa advinhar que número é esse.'
-    # Retorna o número sorteado
     return sorteado
 end
 
-# Método que pede um número para o usuário
+# Função que pede um número para o usuário e depois retorna esse número
 def pede_um_numero(tentativa, limite_tentativas)
     puts "\nTentativa #{tentativa} de #{limite_tentativas}"
     print 'Qual número você acha que foi o escolhido? '
@@ -27,33 +26,37 @@ def pede_um_numero(tentativa, limite_tentativas)
     return chute
 end
 
-# Chamada do método inicial do jogo
+# Função que verifica se o usuário acertou o número sorteado
+def verifica_se_acertou(chute, numero_secreto)
+    # acertou recebe true ou false
+    acertou = numero_secreto == chute
+    if acertou
+        puts 'Você acertou!'
+        return true
+    else
+        # maior recebe true ou false
+        maior = chute < numero_secreto
+        if maior
+            puts 'O número é maior!'
+            return false
+        else
+            puts 'O número é menor!'
+            return false
+        end
+    end  
+end
+
 da_boas_vindas
 
-# numero_secreto recebendo o retorno do método sorteia_numero_secreto
 numero_secreto = sorteia_numero_secreto
 
-# Limite de tentativas que será usado no laço
+# Variável que guarda o limite de tentativas
 limite_tentativas = 5
 
 # Laço que vai aceitar as tentativas do usuário
 for tentativa in 1..limite_tentativas do
-    # Chamada do método que pede um número para o usuáro
     chute = pede_um_numero(tentativa, limite_tentativas)
-
-    # Verificar se o usuário acertou o número e grava true ou false na variável
-    acertou = numero_secreto == chute
-
-    # Se acertou, retorna a mensagem e interrompe o laço
-    if acertou
-        puts 'Você acertou!'
+    if verifica_se_acertou(chute, numero_secreto)
         break
-    else
-        maior = chute < numero_secreto
-        if maior
-            puts 'O número é maior!'
-        else
-            puts 'O número é menor!'
-        end
-    end  
+    end
 end
