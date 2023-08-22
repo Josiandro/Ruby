@@ -33,17 +33,16 @@ def verifica_se_acertou(chute, numero_secreto)
     if acertou
         puts 'Você acertou!'
         return true
+    end
+    
+    # maior recebe true ou false
+    maior = chute < numero_secreto
+    if maior
+        puts 'O número é maior!'
     else
-        # maior recebe true ou false
-        maior = chute < numero_secreto
-        if maior
-            puts 'O número é maior!'
-            return false
-        else
-            puts 'O número é menor!'
-            return false
-        end
+        puts 'O número é menor!'
     end  
+    return false
 end
 
 da_boas_vindas
