@@ -1,18 +1,28 @@
-# Cabeçalho do jogo e aceitação do usuário
-puts '================================'
-puts '       JOGO DA ADVINHAÇÃO       '
-puts '================================'
-print 'Qual é o seu nome? '
-nome = STDIN.gets.chomp
+# Método inicial que dá boas vindas para o jogador
+def da_boas_vindas
+    puts '================================'
+    puts '       JOGO DA ADVINHAÇÃO       '
+    puts '================================'
+    print 'Qual é o seu nome? '
+    nome = STDIN.gets.chomp
+    puts "\nOk! Vamos começar o jogo para você, #{nome}."
+end
 
-# Mensagem inicial
-puts "\nOk! Vamos começar o jogo para você, #{nome}."
+# Método que faz o sorteio do número secreto
+def sorteia_numero_secreto
+    puts 'O computador está escolhendo um número entre 0 e 200.'
+    sorteado = 175
+    puts '...'
+    puts 'Escolhido. Agora você precisa advinhar que número é esse.'
+    # Retorna o número sorteado
+    return sorteado
+end
 
-# Mensagem de processamento/escolha do número
-puts 'O computador está escolhendo um número entre 0 e 200.'
-numero_secreto = 175
-puts '...'
-puts 'Escolhido. Agora você precisa advinhar que número é esse.'
+# Chamada do método inicial do jogo
+da_boas_vindas
+
+# numero_secreto recebendo o retorno do método sorteia_numero_secreto
+numero_secreto = sorteia_numero_secreto
 
 # Limite de tentativas que será usado no laço
 limite_tentativas = 5
