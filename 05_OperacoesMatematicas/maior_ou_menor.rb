@@ -51,6 +51,8 @@ end
 da_boas_vindas
 numero_secreto = sorteia_numero_secreto
 
+# Variável que guarda os pontos o usuário
+pontos_ate_agora = 1000
 # Variável que guarda o limite de tentativas
 limite_tentativas = 5
 # Array que guarda os chutes dados pelo usuário
@@ -62,7 +64,13 @@ for tentativa in 1..limite_tentativas do
     chute = pede_um_numero(chutes.join(', '), tentativa, limite_tentativas)
     # .push é um método da classe array que vai incluir um valor na última posição
     chutes.push(chute)
+    # Pontos descontados, caso o chute do usuário esteja errado
+    pontos_a_perder = (chute - numero_secreto) / 2
+    pontos_ate_agora -= pontos_a_perder
+    # Testa se o usuário acertou
     if verifica_se_acertou(chute, numero_secreto)
         break
     end
 end
+
+puts "Você ganhou #{pontos_ate_agora} pontos."
