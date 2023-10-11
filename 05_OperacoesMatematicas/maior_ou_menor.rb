@@ -65,7 +65,7 @@ for tentativa in 1..limite_tentativas do
     # .push é um método da classe array que vai incluir um valor na última posição
     chutes.push(chute)
     # Pontos descontados, caso o chute do usuário esteja errado
-    pontos_a_perder = (chute - numero_secreto) / 2
+    pontos_a_perder = (chute - numero_secreto) / 2.0
     pontos_ate_agora -= pontos_a_perder
     # Testa se o usuário acertou
     if verifica_se_acertou(chute, numero_secreto)
