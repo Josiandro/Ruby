@@ -11,7 +11,8 @@ end
 # Função que faz o sorteio do número e retorna o número sorteado
 def sorteia_numero_secreto
     puts 'O computador está escolhendo um número entre 0 e 200.'
-    sorteado = 175
+    # Sorteio do número aleatório
+    sorteado = rand(200)
     puts '...'
     puts 'Escolhido. Agora você precisa advinhar que número é esse.'
     return sorteado
