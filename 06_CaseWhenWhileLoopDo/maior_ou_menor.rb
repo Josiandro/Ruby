@@ -31,9 +31,9 @@ def sorteia_numero_secreto(dificuldade)
     else
         maximo = 200
     end
-    puts "O computador está escolhendo um número entre 0 e #{maximo -1}."
+    puts "O computador está escolhendo um número entre 1 e #{maximo}."
     # Sorteio do número aleatório
-    sorteado = rand(maximo)
+    sorteado = rand(maximo) + 1
     puts '...'
     puts 'Escolhido. Agora você precisa advinhar que número é esse.'
     return sorteado
