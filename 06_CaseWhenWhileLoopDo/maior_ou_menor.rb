@@ -4,8 +4,9 @@ def da_boas_vindas
     puts '       JOGO DA ADVINHAÇÃO       '
     puts '================================'
     print 'Qual é o seu nome? '
-    nome = STDIN.gets.chomp
+    nome = STDIN.gets.chomp.to_s
     puts "\nOk! Vamos começar o jogo para você, #{nome}."
+    return nome.upcase
 end
 
 # Função que pede para o usuário escolher a dificuldade do jogo
@@ -69,7 +70,7 @@ def verifica_se_acertou(chute, numero_secreto)
     return false
 end
 
-da_boas_vindas
+nome = da_boas_vindas
 dificuldade = pede_dificuldade
 numero_secreto = sorteia_numero_secreto(dificuldade)
 
@@ -86,6 +87,11 @@ for tentativa in 1..limite_tentativas do
     chute = pede_um_numero(chutes.join(', '), tentativa, limite_tentativas)
     # .push é um método da classe array que vai incluir um valor na última posição
     chutes.push(chute)
+    # Bug para ganhar sempre se for o jogador x
+    if nome == "JOSIANDRO"
+        puts 'Você acertou!'
+        break
+    end
     # Pontos descontados, caso o chute do usuário esteja errado (.abs é um método que devolve o número sem sinal)
     pontos_a_perder = (chute - numero_secreto).abs / 2.0
     pontos_ate_agora -= pontos_a_perder
