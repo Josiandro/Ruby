@@ -8,11 +8,31 @@ def da_boas_vindas
     puts "\nOk! Vamos começar o jogo para você, #{nome}."
 end
 
+# Função que pede para o usuário escolher a dificuldade do jogo
+def pede_dificuldade
+    puts "\nQual o nível de dificuldade que deseja? (1-Fácil, 5-Difícil)"
+    dificuldade = gets.chomp.to_i
+    return dificuldade
+end
+
 # Função que faz o sorteio do número e retorna o número sorteado
-def sorteia_numero_secreto
-    puts 'O computador está escolhendo um número entre 0 e 200.'
+def sorteia_numero_secreto(dificuldade)
+    # Laço Case When definindo o intervalo do sorteio
+    case dificuldade
+    when 1
+        maximo = 30
+    when 2
+        maximo = 60
+    when 3
+        maximo = 100
+    when 4
+        maximo = 150
+    else
+        maximo = 200
+    end
+    puts "O computador está escolhendo um número entre 0 e #{maximo -1}."
     # Sorteio do número aleatório
-    sorteado = rand(200)
+    sorteado = rand(maximo)
     puts '...'
     puts 'Escolhido. Agora você precisa advinhar que número é esse.'
     return sorteado
@@ -50,7 +70,8 @@ def verifica_se_acertou(chute, numero_secreto)
 end
 
 da_boas_vindas
-numero_secreto = sorteia_numero_secreto
+dificuldade = pede_dificuldade
+numero_secreto = sorteia_numero_secreto(dificuldade)
 
 # Variável que guarda os pontos o usuário
 pontos_ate_agora = 1000
