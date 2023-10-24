@@ -70,35 +70,52 @@ def verifica_se_acertou(chute, numero_secreto)
     return false
 end
 
-nome = da_boas_vindas
-dificuldade = pede_dificuldade
-numero_secreto = sorteia_numero_secreto(dificuldade)
+# Método que exectua o jogo
+def joga(nome, dificuldade)
+    numero_secreto = sorteia_numero_secreto(dificuldade)
 
-# Variável que guarda os pontos o usuário
-pontos_ate_agora = 1000
-# Variável que guarda o limite de tentativas
-limite_tentativas = 5
-# Array que guarda os chutes dados pelo usuário
-chutes = []
+    # Variável que guarda os pontos o usuário
+    pontos_ate_agora = 1000
+    # Variável que guarda o limite de tentativas
+    limite_tentativas = 5
+    # Array que guarda os chutes dados pelo usuário
+    chutes = []
 
-# Laço que vai aceitar as tentativas do usuário
-for tentativa in 1..limite_tentativas do
-    # .join é um método da classe array que vai colocar um separador ao fazer a ipressão dos itens do array
-    chute = pede_um_numero(chutes.join(', '), tentativa, limite_tentativas)
-    # .push é um método da classe array que vai incluir um valor na última posição
-    chutes.push(chute)
-    # Bug para ganhar sempre se for o jogador x
-    if nome == "JOSIANDRO"
-        puts 'Você acertou!'
-        break
+    # Laço que vai aceitar as tentativas do usuário
+    for tentativa in 1..limite_tentativas do
+        # .join é um método da classe array que vai colocar um separador ao fazer a ipressão dos itens do array
+        chute = pede_um_numero(chutes.join(', '), tentativa, limite_tentativas)
+        # .push é um método da classe array que vai incluir um valor na última posição
+        chutes.push(chute)
+        # Bug para ganhar sempre se for o jogador x
+        if nome == "JOSIANDRO"
+            puts 'Você acertou!'
+            break
+        end
+        # Pontos descontados, caso o chute do usuário esteja errado (.abs é um método que devolve o número sem sinal)
+        pontos_a_perder = (chute - numero_secreto).abs / 2.0
+        pontos_ate_agora -= pontos_a_perder
+        # Testa se o usuário acertou
+        if verifica_se_acertou(chute, numero_secreto)
+            break
+        end
     end
-    # Pontos descontados, caso o chute do usuário esteja errado (.abs é um método que devolve o número sem sinal)
-    pontos_a_perder = (chute - numero_secreto).abs / 2.0
-    pontos_ate_agora -= pontos_a_perder
-    # Testa se o usuário acertou
-    if verifica_se_acertou(chute, numero_secreto)
-        break
-    end
+
+    puts "Você ganhou #{pontos_ate_agora} pontos."
 end
 
-puts "Você ganhou #{pontos_ate_agora} pontos."
+# Método que questiona se o usuário quer jogar novamente
+def quer_jogar
+    print "Deseja jogar novamente? (S/N)"
+    quero_jogar = STDIN.gets.chomp.to_s
+    return quero_jogar.upcase
+end
+
+nome = da_boas_vindas
+dificuldade = pede_dificuldade
+
+# Laço que chama o método do jogo, caso o usuário queria jogar
+loop do
+    joga(nome, dificuldade)
+    break if quer_jogar.upcase != "S"
+end
