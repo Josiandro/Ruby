@@ -1,8 +1,14 @@
 # Função que dá boas vindas ao jogador
 def da_boas_vindas
-    puts '================================'
-    puts '       JOGO DA ADVINHAÇÃO       '
-    puts '================================'
+    puts
+    puts "        P  /_\\  P                             "
+    puts "       /_\\_|_|_/_\\                           "
+    puts "   n_n | ||. .|| | n_n         Bem vindo ao    "
+    puts "   |_|_|nnnn nnnn|_|_|     Jogo de Adivinhação!"
+    puts "  |' '  |  |_|  |'  ' |                        "
+    puts "  |_____| ' _ ' |_____|                        " 
+    puts "        \\__|_|__/                             "
+    puts
     print 'Qual é o seu nome? '
     nome = STDIN.gets.chomp.to_s
     puts "\nOk! Vamos começar o jogo para você, #{nome}."
@@ -11,7 +17,9 @@ end
 
 # Função que pede para o usuário escolher a dificuldade do jogo
 def pede_dificuldade
-    puts "\nQual o nível de dificuldade que deseja? (1-Fácil, 5-Difícil)"
+    puts "\nQual o nível de dificuldade?"
+    puts "(1) Muito fácil (2) Fácil (3) Normal (4) Difícil (5) Impossível"
+    print "Escolha: "
     dificuldade = gets.chomp.to_i
     return dificuldade
 end
@@ -49,6 +57,29 @@ def pede_um_numero(chutes, tentativa, limite_tentativas)
     return chute
 end
 
+# Método que mostra o emoji se o usuário acertou o número
+def ganhou
+    puts
+    puts "             OOOOOOOOOOO               "
+    puts "         OOOOOOOOOOOOOOOOOOO           "
+    puts "      OOOOOO  OOOOOOOOO  OOOOOO        "
+    puts "    OOOOOO      OOOOO      OOOOOO      "
+    puts "  OOOOOOOO  #   OOOOO  #   OOOOOOOO    "
+    puts " OOOOOOOOOO    OOOOOOO    OOOOOOOOOO   "
+    puts "OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO  "
+    puts "OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO  "
+    puts "OOOO  OOOOOOOOOOOOOOOOOOOOOOOOO  OOOO  "
+    puts " OOOO  OOOOOOOOOOOOOOOOOOOOOOO  OOOO   "
+    puts "  OOOO   OOOOOOOOOOOOOOOOOOOO  OOOO    "
+    puts "    OOOOO   OOOOOOOOOOOOOOO   OOOO     "
+    puts "      OOOOOO   OOOOOOOOO   OOOOOO      "
+    puts "         OOOOOO         OOOOOO         "
+    puts "             OOOOOOOOOOOO              "
+    puts
+    puts "               Acertou!                "
+    puts
+end
+
 # Função que verifica se o usuário acertou o número sorteado
 def verifica_se_acertou(chute, numero_secreto)
     # acertou recebe true ou false
@@ -56,7 +87,7 @@ def verifica_se_acertou(chute, numero_secreto)
     
     # if com implementação do early return
     if acertou
-        puts 'Você acertou!'
+        ganhou
         return true
     end
     
@@ -89,7 +120,7 @@ def joga(nome, dificuldade)
         chutes.push(chute)
         # Bug para ganhar sempre se for o jogador x
         if nome == "JOSIANDRO"
-            puts 'Você acertou!'
+            ganhou
             break
         end
         # Pontos descontados, caso o chute do usuário esteja errado (.abs é um método que devolve o número sem sinal)
