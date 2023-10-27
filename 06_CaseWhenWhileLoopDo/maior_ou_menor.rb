@@ -105,17 +105,17 @@ def joga(nome, dificuldade)
 end
 
 # Método que questiona se o usuário quer jogar novamente
-def quer_jogar
+def jogar_novamente
     print "Deseja jogar novamente? (S/N)"
-    quero_jogar = STDIN.gets.chomp.to_s
-    return quero_jogar.upcase
+    resposta = STDIN.gets.chomp.to_s
+    return "nao" if resposta.upcase == "N"
 end
 
 nome = da_boas_vindas
 dificuldade = pede_dificuldade
 
-# Laço que chama o método do jogo, caso o usuário queria jogar
+# Laço que executa o jogo, enquanto o usuário quiser jogar
 loop do
     joga(nome, dificuldade)
-    break if quer_jogar.upcase != "S"
+    break if jogar_novamente == "nao"
 end
