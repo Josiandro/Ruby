@@ -12,6 +12,7 @@ def escolhe_palavra_secreta
     puts "Escolhendo uma palavra secreta..."
     palavra_secreta = "programador"
     puts "Palavra secreta com #{palavra_secreta.size} letras... boa sorte!"
+    return palavra_secreta
 end
 
 # Método que questiona se o usuário quer jogar novamente
@@ -39,10 +40,26 @@ def joga(nome)
     chutes = []
     pontos_ate_agora = 0
 
+    # Laço que controla as tentativas, acima de cinco, o usuário perdeu o jogo
     while erros < 5
         chute = pede_um_chute(erros, chutes.join(", "))
         chutes.push(chute)
-
+        # chutou_uma_letra recebe true se a variável chute recebeu apenas uma letra
+        chutou_uma_letra = chute.size == 1
+        if chutou_uma_letra
+        else
+            # acertou recebe true se o chute (palavra) foi igual a palavra_secreta
+            acertou = chute == palavra_secreta
+            if acertou
+                puts "Parabéns! Acertou"
+                pontos_ate_agora += 100
+                break
+            else
+                puts "Que pena... errou"
+                pontos_ate_agora -= 30
+                erros += 1
+            end
+        end
     end
 
     puts "Você ganhou #{pontos_ate_agora} pontos."
