@@ -47,6 +47,19 @@ def joga(nome)
         # chutou_uma_letra recebe true se a variável chute recebeu apenas uma letra
         chutou_uma_letra = chute.size == 1
         if chutou_uma_letra
+            letra_procurada = chute[0]
+            total_encontrado = 0
+            for i in 0..(palavra_secreta.size-1) do
+                if palavra_secreta[i] == letra_procurada
+                    total_encontrado += 1
+                end
+            end
+            if total_encontrado != 0
+                puts "Letra encontrada #{total_encontrado} vezes."
+            else
+                puts "Letra encontrada."
+                erros += 1
+            end
         else
             # acertou recebe true se o chute (palavra) foi igual a palavra_secreta
             acertou = chute == palavra_secreta
