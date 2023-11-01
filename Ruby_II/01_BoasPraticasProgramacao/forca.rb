@@ -43,6 +43,10 @@ def joga(nome)
     # Laço que controla as tentativas, acima de cinco, o usuário perdeu o jogo
     while erros < 5
         chute = pede_um_chute(erros, chutes.join(", "))
+        if chutes.include?(chute)
+            puts "Você já chutou a letra #{chute}"
+            next
+        end
         chutes.push(chute)
         # chutou_uma_letra recebe true se a variável chute recebeu apenas uma letra
         chutou_uma_letra = chute.size == 1
