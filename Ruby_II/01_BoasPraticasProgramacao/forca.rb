@@ -33,6 +33,17 @@ def pede_um_chute(erros, chutes)
     return chute
 end
 
+# Método que verifica se a letra consta na palavra
+def conta(palavra_secreta, letra_procurada)
+    total_encontrado = 0
+    (palavra_secreta.chars).each do |letra|
+        if letra == letra_procurada
+            total_encontrado += 1
+        end
+    end
+    return total_encontrado
+end
+
 # Método que executa o jogo
 def joga(nome)
     palavra_secreta = escolhe_palavra_secreta
@@ -48,17 +59,12 @@ def joga(nome)
         chutou_uma_letra = chute.size == 1
         if chutou_uma_letra
             letra_procurada = chute[0]
-            total_encontrado = 0
-            for i in 0..(palavra_secreta.size-1) do
-                if palavra_secreta[i] == letra_procurada
-                    total_encontrado += 1
-                end
-            end
-            if total_encontrado != 0
-                puts "Letra encontrada #{total_encontrado} vezes."
-            else
+            total_encontrado = conta(palavra_secreta, letra_procurada)
+            if total_encontrado == 0
                 puts "Letra encontrada."
                 erros += 1
+            else
+                puts "Letra encontrada #{total_encontrado} vezes."
             end
         else
             # acertou recebe true se o chute (palavra) foi igual a palavra_secreta
