@@ -1,4 +1,4 @@
-# Método que lista os dados iniciais do jogo
+# Método que dá boas vindas e solicita o nome do jogador
 def da_boas_vindas
     puts "Bem vindo ao jogo da forca"
     print "Qual é o seu nome? "
@@ -7,7 +7,7 @@ def da_boas_vindas
     puts "Começaremos o jogo para você, #{nome}"
 end
 
-# Método que define a palavra secreta
+# Método que define e retorna a palavra secreta
 def escolhe_palavra_secreta
     puts "Escolhendo uma palavra secreta..."
     palavra_secreta = "programador"
@@ -22,7 +22,7 @@ def jogar_novamente
     return "nao" if resposta.upcase == "N"
 end
 
-# Método que pede um chute para o usuário
+# Método que recebe o chute/palpite do jogador e retorna ele
 def pede_um_chute(erros, chutes)
     puts "\n\n\n\n"
     puts "Erros até agora: #{erros}"
@@ -81,8 +81,7 @@ end
 # Varíavel nome recebendo o método da_boas_vindas
 nome = da_boas_vindas
 
-
-# Loop que fica executando o jogo
+# Loop que controla a execução do jogo, até que o usuário não queira mais jogar
 loop do
     joga(nome)
     break if jogar_novamente == "nao"
