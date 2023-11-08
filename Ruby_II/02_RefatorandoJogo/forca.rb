@@ -1,3 +1,4 @@
+# Chamada do arquivo ui.rb que tem os métodos/funções de inteface com o usuário
 require_relative 'ui.rb'
 
 # Método que executa o jogo
