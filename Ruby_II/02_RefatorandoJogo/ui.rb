@@ -59,6 +59,6 @@ def avisa_errou_palavra
 end
 
 # Método que retorna os pontos até agora
-def avisa_pontos
+def avisa_pontos(pontos_ate_agora)
     puts "Você ganhou #{pontos_ate_agora} pontos."
 end
