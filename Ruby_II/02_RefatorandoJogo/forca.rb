@@ -1,3 +1,5 @@
+require_relative 'ui.rb'
+
 # Método que executa o jogo
 def joga(nome)
     palavra_secreta = escolhe_palavra_secreta
