@@ -43,6 +43,7 @@ def joga(nome)
     # Laço que controla as tentativas, acima de cinco, o usuário perdeu o jogo
     while erros < 5
         chute = pede_um_chute(erros, chutes.join(", "))
+        # Testa se o usuário já chutou essa letra
         if chutes.include?(chute)
             puts "Você já chutou a letra #{chute}"
             next
@@ -54,7 +55,7 @@ def joga(nome)
             letra_procurada = chute[0]
             total_encontrado = palavra_secreta.count(letra_procurada)
             if total_encontrado == 0
-                puts "Letra encontrada."
+                puts "Letra não encontrada."
                 erros += 1
             else
                 puts "Letra encontrada #{total_encontrado} vezes."
