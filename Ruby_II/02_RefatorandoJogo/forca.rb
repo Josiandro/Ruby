@@ -1,6 +1,19 @@
 # Chamada do arquivo ui.rb que tem os métodos/funções de inteface com o usuário
 require_relative 'ui.rb'
 
+# Método que controla se o usuário passou um chute válido
+def pede_um_chute_valido(erros, chutes)
+    loop do
+        chute = pede_um_chute(erros, chutes)
+        # Testa se o usuário já chutou essa letra
+        if chutes.include?(chute)
+            avisa_chute_efetuado(chute)
+        else
+            return chute
+        end
+    end
+end
+
 # Método que executa o jogo
 def joga(nome)
     palavra_secreta = escolhe_palavra_secreta
@@ -10,12 +23,7 @@ def joga(nome)
 
     # Laço que controla as tentativas, acima de cinco, o usuário perdeu o jogo
     while erros < 5
-        chute = pede_um_chute(erros, chutes.join(", "))
-        # Testa se o usuário já chutou essa letra
-        if chutes.include?(chute)
-            avisa_chute_efetuado(chute)
-            next
-        end
+        chute = pede_um_chute_valido(erros, chutes.join(", "))
         chutes.push(chute)
         # chutou_uma_letra recebe true se a variável chute recebeu apenas uma letra
         chutou_uma_letra = chute.size == 1
