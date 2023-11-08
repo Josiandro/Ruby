@@ -46,15 +46,13 @@ def joga(nome)
     avisa_pontos(pontos_ate_agora)
 end
 
-# Varíavel nome recebendo o método da_boas_vindas
-nome = da_boas_vindas
-
 def jogo_da_forca
+    # Varíavel nome recebendo o método da_boas_vindas
+    nome = da_boas_vindas
+   
     # Loop que controla a execução do jogo, até que o usuário não queira mais jogar
     loop do
         joga(nome)
         break if jogar_novamente == "nao"
     end
 end
-
-jogo_da_forca
