@@ -23,8 +23,9 @@ def jogar_novamente
 end
 
 # Método com o cabeçalho da tentativa de chute
-def cabecalho_de_tentativas(erros, chutes)
+def cabecalho_de_tentativas(erros, chutes, mascara)
     puts "\n\n\n\n"
+    puts "Palavra secreta: #{mascara}"
     puts "Erros até agora: #{erros}"
     puts "Chutes até agora: #{chutes}"
 end

@@ -1,9 +1,22 @@
 # Chamada do arquivo ui.rb que tem os métodos/funções de inteface com o usuário
 require_relative 'ui.rb'
 
+# Método que vai mostrando a palavra secreta, como no jogo da forca
+def palavra_mascarada(chutes, palavra_secreta)
+    mascara = ""
+    for letra in palavra_secreta.chars
+        if chutes.include? letra
+            mascara.concat("[#{letra}]")
+        else
+            mascara.concat("[ ]")
+        end
+    end
+    return mascara
+end
+
 # Método que controla se o usuário passou um chute válido
-def pede_um_chute_valido(erros, chutes)
-    cabecalho_de_tentativas(erros, chutes)
+def pede_um_chute_valido(erros, chutes, mascara)
+    cabecalho_de_tentativas(erros, chutes, mascara)
     loop do
         chute = pede_um_chute
         # Testa se o usuário já chutou essa letra
@@ -24,7 +37,8 @@ def joga(nome)
 
     # Laço que controla as tentativas, acima de cinco, o usuário perdeu o jogo
     while erros < 5
-        chute = pede_um_chute_valido(erros, chutes.join(", "))
+        mascara = palavra_mascarada(chutes, palavra_secreta)
+        chute = pede_um_chute_valido(erros, chutes.join(", "), mascara)
         chutes.push(chute)
         # chutou_uma_letra recebe true se a variável chute recebeu apenas uma letra
         chutou_uma_letra = chute.size == 1
