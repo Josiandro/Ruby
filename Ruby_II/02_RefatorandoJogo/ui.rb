@@ -30,7 +30,7 @@ def cabecalho_de_tentativas(erros, chutes)
 end
 
 # Método que recebe o chute/palpite do jogador e retorna ele
-def pede_um_chute(erros, chutes)
+def pede_um_chute
     puts "Entre com uma letra ou uma palavra"
     chute = STDIN.gets.chomp
     puts "Será que acertou? Você chutou #{chute}"

@@ -5,7 +5,7 @@ require_relative 'ui.rb'
 def pede_um_chute_valido(erros, chutes)
     cabecalho_de_tentativas(erros, chutes)
     loop do
-        chute = pede_um_chute(erros, chutes)
+        chute = pede_um_chute
         # Testa se o usuário já chutou essa letra
         if chutes.include?(chute)
             avisa_chute_efetuado(chute)
