@@ -55,7 +55,7 @@ def joga(nome)
 end
 
 def jogo_da_forca
-    # Varíavel nome recebendo o método da_boas_vindas
+    # Varíavel nome recebendo o resultado do método da_boas_vindas
     nome = da_boas_vindas
    
     # Loop que controla a execução do jogo, até que o usuário não queira mais jogar
