@@ -22,11 +22,15 @@ def jogar_novamente
     return "nao" if resposta.upcase == "N"
 end
 
-# Método que recebe o chute/palpite do jogador e retorna ele
-def pede_um_chute(erros, chutes)
+# Método com o cabeçalho da tentativa de chute
+def cabecalho_de_tentativas(erros, chutes)
     puts "\n\n\n\n"
     puts "Erros até agora: #{erros}"
     puts "Chutes até agora: #{chutes}"
+end
+
+# Método que recebe o chute/palpite do jogador e retorna ele
+def pede_um_chute(erros, chutes)
     puts "Entre com uma letra ou uma palavra"
     chute = STDIN.gets.chomp
     puts "Será que acertou? Você chutou #{chute}"

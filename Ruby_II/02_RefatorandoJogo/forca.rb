@@ -3,6 +3,7 @@ require_relative 'ui.rb'
 
 # Método que controla se o usuário passou um chute válido
 def pede_um_chute_valido(erros, chutes)
+    cabecalho_de_tentativas(erros, chutes)
     loop do
         chute = pede_um_chute(erros, chutes)
         # Testa se o usuário já chutou essa letra
@@ -50,7 +51,6 @@ def joga(nome)
             end
         end
     end
-
     avisa_pontos(pontos_ate_agora)
 end
 
