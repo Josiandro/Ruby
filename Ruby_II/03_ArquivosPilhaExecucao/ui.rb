@@ -1,6 +1,17 @@
 # Arquivo ruby com a aplicação de inteface com o usuário do jogo
 # ----------------------------------------------------------------
 # 
+# Método que avisa sobre a palavra estar sendo escolhida
+def avisa_escolhendo_palavra
+    puts "Escolhendo uma palavra secreta..."
+end
+
+# Método que avisa sobre a palavra já ter sido escolhida
+def avisa_palavra_escolhida(palavra_secreta)
+    puts "Palavra secreta com #{palavra_secreta.size} letras... boa sorte!"
+    return palavra_secreta
+end
+
 # Método que dá boas vindas e solicita o nome do jogador
 def da_boas_vindas
     puts "Bem vindo ao jogo da forca"
@@ -8,14 +19,6 @@ def da_boas_vindas
     nome = STDIN.gets.chomp
     puts "\n\n\n\n\n\n"
     puts "Começaremos o jogo para você, #{nome}"
-end
-
-# Método que define e retorna a palavra secreta
-def escolhe_palavra_secreta
-    puts "Escolhendo uma palavra secreta..."
-    palavra_secreta = "programador"
-    puts "Palavra secreta com #{palavra_secreta.size} letras... boa sorte!"
-    return palavra_secreta
 end
 
 # Método que questiona se o usuário quer jogar novamente

@@ -4,6 +4,17 @@
 # Chamada do arquivo ui.rb que tem os métodos/funções de inteface com o usuário
 require_relative 'ui.rb'
 
+# Método que define e retorna a palavra secreta
+def escolhe_palavra_secreta
+    avisa_escolhendo_palavra
+    # Faz a leitura do arquivo.txt e guarda tudo na variável texto
+    texto = File.read("dicionario.txt")
+    todas_as_palavras = texto.split("\n")
+    numero_escolhido = rand(todas_as_palavras.size)
+    palavra_secreta = todas_as_palavras[numero_escolhido]
+    avisa_palavra_escolhida(palavra_secreta)
+end
+
 # Método que vai mostrando a palavra secreta, como no jogo da forca
 def palavra_mascarada(chutes, palavra_secreta)
     mascara = ""
