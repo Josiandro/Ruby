@@ -39,7 +39,7 @@ end
 # Método que recebe o chute/palpite do jogador e retorna ele
 def pede_um_chute
     puts "Entre com uma letra ou uma palavra"
-    chute = STDIN.gets.chomp
+    chute = STDIN.gets.chomp.downcase
     puts "Será que acertou? Você chutou #{chute}"
     return chute
 end
