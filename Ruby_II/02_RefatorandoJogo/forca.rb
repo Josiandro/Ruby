@@ -1,3 +1,6 @@
+# Arquivo ruby com a parte lógica do jogo
+# ----------------------------------------------------------------
+# 
 # Chamada do arquivo ui.rb que tem os métodos/funções de inteface com o usuário
 require_relative 'ui.rb'
 
