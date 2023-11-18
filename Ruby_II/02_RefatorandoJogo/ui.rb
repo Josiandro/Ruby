@@ -61,7 +61,7 @@ def avisa_acertou_palavra
     puts "Parabéns! Acertou"
 end
 
-# Método que retorna se errou acertou a palavra
+# Método que retorna se errou a palavra
 def avisa_errou_palavra
     puts "Que pena... errou"
 end
