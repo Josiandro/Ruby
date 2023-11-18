@@ -1,3 +1,6 @@
+# Arquivo ruby com a aplicação de inteface com o usuário do jogo
+# ----------------------------------------------------------------
+# 
 # Método que dá boas vindas e solicita o nome do jogador
 def da_boas_vindas
     puts "Bem vindo ao jogo da forca"
